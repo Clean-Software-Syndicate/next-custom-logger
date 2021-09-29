@@ -14,7 +14,7 @@ In custom server:
 ~~~ js
 const next = require('next');
 const withCustomLogger = require('@cssynd/next-custom-logger');
- 
+
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = withCustomLogger(next({ dev }), function (ctx, err) {
     // custom logger callback
