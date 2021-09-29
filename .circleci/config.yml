@@ -13,6 +13,7 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      - sonarcloud/scan
       - run: npm test
 
 # Invoke jobs via workflows
