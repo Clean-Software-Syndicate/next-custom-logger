@@ -1,13 +1,12 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { ParsedUrlQuery } from 'querystring'
-import Error from "next/error";
 
 interface NextServer {
     getServerRequestHandler(): any
     server: any
 }
 
-type RequestContext = {
+export type RequestContext = {
     req: IncomingMessage
     res: ServerResponse
     pathname: string
