@@ -1,10 +1,12 @@
 {
   "name": "@cssynd/next-custom-logger",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Next Custom Logger ==================",
   "main": "dist/withCustomLogger.js",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc",
+    "prebuild": "npm run clean",
     "test": "ts-mocha",
     "prepublish": "npm run build"
   },
