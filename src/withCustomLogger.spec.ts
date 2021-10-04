@@ -16,6 +16,8 @@ describe('test monkey patched custom logger', function () {
         // monkey patch the server for testing.
         const serverProto = Object.getPrototypeOf(server);
         serverProto.renderErrorToResponse = function () {};
+        // setup as if next was on an older version
+        serverProto.renderErrorToHTML = function () {};
         wrappedServer.server = server;
 
         // @ts-ignore
@@ -23,8 +25,10 @@ describe('test monkey patched custom logger', function () {
 
         // @ts-ignore
         wrappedServer.renderErrorToResponse({}, new Error()).then(console.log).catch(console.error);
-        await server.close()
+        // @ts-ignore
+        wrappedServer.renderErrorToHTML(new Error(), {}, {}, '/test').then(console.log).catch(console.error);
+        await server.close();
 
-        expect(logger.calledOnce).toBe(true);
+        expect(logger.calledTwice).toBe(true);
     });
 });
